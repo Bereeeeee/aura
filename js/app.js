@@ -1,13 +1,9 @@
-/**
- * Aura Health PWA - Main Logic
- */
-
 const app = {
     state: {
         habits: {
-            water: 0, // ml
-            sleep: 6.5, // hours
-            exercise: 15 // min
+            water: 0, 
+            sleep: 6.5, 
+            exercise: 15 
         },
         goals: {
             water: 2000,
@@ -40,9 +36,7 @@ const app = {
     setupNavigation() {
         document.querySelectorAll('.nav-item').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Remove active class from all
                 document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-                // Add to clicked (handle svg click bubbling)
                 const targetBtn = e.target.closest('.nav-item');
                 targetBtn.classList.add('active');
                 
@@ -58,15 +52,13 @@ const app = {
         
         if (!template) return;
 
-        // Clear current content
         main.innerHTML = '';
         
-        // Clone and append new content
         const content = template.content.cloneNode(true);
         main.appendChild(content);
         
         this.state.view = viewName;
-        this.updateUI(); // Re-bind data to new DOM elements
+        this.updateUI(); 
     },
 
     updateUI() {
@@ -80,13 +72,11 @@ const app = {
         }
     },
 
-    /* --- Feature: Home --- */
     updateGreeting() {
         const hour = new Date().getHours();
         let greeting = 'Buenas noches';
         if (hour < 12) greeting = 'Buenos días';
         else if (hour < 20) greeting = 'Buenas tardes';
-        // Aquí podrías actualizar texto en DOM si quieres
     },
 
     updateHomeProgress() {
@@ -110,7 +100,6 @@ const app = {
         }
     },
 
-    /* --- Feature: Habits --- */
     addWater() {
         this.updateHabit('water', 250);
         alert('💧 Agua registrada (+250ml)');
@@ -154,7 +143,6 @@ const app = {
         }
     },
 
-    /* --- Feature: Mindfulness --- */
     isBreathing: false,
     breathingInterval: null,
     
@@ -197,7 +185,6 @@ const app = {
         }, 4000);
     },
 
-    /* --- Feature: Health Log --- */
     logSymptom() {
         this.renderView('health');
     },
@@ -326,7 +313,6 @@ const app = {
     }
 };
 
-// Initialize App
 document.addEventListener('DOMContentLoaded', () => {
     app.init();
 });

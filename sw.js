@@ -20,11 +20,9 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                // Return cached response if found
                 if (response) {
                     return response;
                 }
-                // Otherwise fetch from network
                 return fetch(event.request);
             })
     );

@@ -7,39 +7,35 @@
     <meta name="description" content="Tu compañero de bienestar personal. Rastrea hábitos, medita y cuida tu salud.">
     <meta name="theme-color" content="#0f172a">
     
-    <!-- PWA Tags -->
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
         <header class="app-header">
             <div class="logo">
                 <div class="logo-icon"></div>
                 <h1>Aura</h1>
             </div>
             <div class="user-avatar">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User">
+
+<img src="https://api.dicebear.com/7.x/fun-emoji/svg?seed=Felix" alt="User">
+
+
             </div>
         </header>
 
-        <!-- Main Content Area -->
         <main id="main-content" class="content-area">
-            <!-- Views will be injected here by JS -->
         </main>
 
-        <!-- Bottom Navigation -->
         <nav class="bottom-nav">
             <button class="nav-item active" data-target="home">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -60,12 +56,11 @@
         </nav>
     </div>
 
-    <!-- Templates for Views -->
     <template id="view-home">
         <div class="view-container fade-in">
             <div class="greeting-card glass-card">
                 <p class="date-display">Domingo, 1 Dic</p>
-                <h2 class="greeting-text">Buenas tardes, <span class="highlight">Bere</span></h2>
+                <h2 class="greeting-text">Bienvenido, <span class="highlight">Cuidemos tu salud</span></h2>
                 <div class="daily-progress">
                     <div class="progress-ring-container">
                         <svg class="progress-ring" width="80" height="80">
@@ -85,19 +80,19 @@
             <div class="grid-2">
                 <button class="action-card glass-card" onclick="app.addWater()">
                     <div class="icon-bg blue">💧</div>
-                    <span>Beber Agua</span>
+                    <span style="color: white;">Beber Agua</span>
                 </button>
                 <button class="action-card glass-card" onclick="app.startBreathing()">
                     <div class="icon-bg purple">🧘‍♀️</div>
-                    <span>Respirar</span>
+                    <span style="color: white;">Respirar</span>
                 </button>
                 <button class="action-card glass-card" onclick="app.logSymptom()">
                     <div class="icon-bg red">📝</div>
-                    <span>Síntoma</span>
+                    <span style="color: white;">Síntoma</span>
                 </button>
                 <button class="action-card glass-card" onclick="app.logSleep()">
                     <div class="icon-bg indigo">🌙</div>
-                    <span>Dormir</span>
+                    <span style="color: white;">Dormir</span>
                 </button>
             </div>
         </div>
