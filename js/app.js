@@ -2,8 +2,8 @@ const app = {
     state: {
         habits: {
             water: 0, 
-            sleep: 6.5, 
-            exercise: 15 
+            sleep: 0, 
+            exercise: 0
         },
         goals: {
             water: 2000,
