@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aura Health</title>
+    <meta name="description" content="Tu compañero de bienestar personal. Rastrea hábitos, medita y cuida tu salud.">
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- PWA Tags -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>Aura</h1>
+            </div>
+            <div class="user-avatar">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User">
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="content-area">
+            <!-- Views will be injected here by JS -->
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-target="home">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>Inicio</span>
+            </button>
+            <button class="nav-item" data-target="habits">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"></path></svg>
+                <span>Hábitos</span>
+            </button>
+            <button class="nav-item" data-target="mindfulness">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <span>Mente</span>
+            </button>
+            <button class="nav-item" data-target="health">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                <span>Salud</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Templates for Views -->
+    <template id="view-home">
+        <div class="view-container fade-in">
+            <div class="greeting-card glass-card">
+                <p class="date-display">Domingo, 1 Dic</p>
+                <h2 class="greeting-text">Buenas tardes, <span class="highlight">Bere</span></h2>
+                <div class="daily-progress">
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" width="80" height="80">
+                            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="transparent" r="34" cx="40" cy="40"/>
+                            <circle class="progress-ring__circle" stroke="#8b5cf6" stroke-width="6" fill="transparent" r="34" cx="40" cy="40"/>
+                        </svg>
+                        <div class="progress-icon">💧</div>
+                    </div>
+                    <div class="progress-stats">
+                        <p>Objetivo Diario</p>
+                        <h3>75% Completado</h3>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">Acciones Rápidas</h3>
+            <div class="grid-2">
+                <button class="action-card glass-card" onclick="app.addWater()">
+                    <div class="icon-bg blue">💧</div>
+                    <span>Beber Agua</span>
+                </button>
+                <button class="action-card glass-card" onclick="app.startBreathing()">
+                    <div class="icon-bg purple">🧘‍♀️</div>
+                    <span>Respirar</span>
+                </button>
+                <button class="action-card glass-card" onclick="app.logSymptom()">
+                    <div class="icon-bg red">📝</div>
+                    <span>Síntoma</span>
+                </button>
+                <button class="action-card glass-card" onclick="app.logSleep()">
+                    <div class="icon-bg indigo">🌙</div>
+                    <span>Dormir</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-habits">
+        <div class="view-container fade-in">
+            <h2 class="page-title">Mis Hábitos</h2>
+            
+            <div class="habit-card glass-card">
+                <div class="habit-header">
+                    <div class="habit-info">
+                        <h3>Agua</h3>
+                        <p>Meta: 2000ml</p>
+                    </div>
+                    <div class="habit-val" id="water-val">1200ml</div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill blue" style="width: 60%"></div>
+                </div>
+                <div class="habit-controls">
+                    <button class="control-btn" onclick="app.updateHabit('water', -250)">-</button>
+                    <button class="control-btn" onclick="app.updateHabit('water', 250)">+</button>
+                </div>
+            </div>
+
+            <div class="habit-card glass-card">
+                <div class="habit-header">
+                    <div class="habit-info">
+                        <h3>Sueño</h3>
+                        <p>Meta: 8h</p>
+                    </div>
+                    <div class="habit-val" id="sleep-val">6.5h</div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill indigo" style="width: 80%"></div>
+                </div>
+                <input type="range" min="0" max="12" step="0.5" value="6.5" class="slider" oninput="app.updateHabit('sleep', this.value)">
+            </div>
+
+             <div class="habit-card glass-card">
+                <div class="habit-header">
+                    <div class="habit-info">
+                        <h3>Ejercicio</h3>
+                        <p>Meta: 30min</p>
+                    </div>
+                    <div class="habit-val" id="exercise-val">15min</div>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill green" style="width: 50%"></div>
+                </div>
+                 <div class="habit-controls">
+                    <button class="control-btn" onclick="app.updateHabit('exercise', -15)">-</button>
+                    <button class="control-btn" onclick="app.updateHabit('exercise', 15)">+</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-mindfulness">
+        <div class="view-container fade-in center-content">
+            <h2 class="page-title">Respira</h2>
+            <div class="breathing-circle-container">
+                <div class="breathing-circle"></div>
+                <div class="breathing-text">Inhala</div>
+            </div>
+            <button class="primary-btn" id="breath-btn" onclick="app.toggleBreathing()">Iniciar</button>
+            
+            <div class="meditation-list">
+                <h3 class="section-title">Sonidos Relajantes</h3>
+                <div class="sound-card glass-card">
+                    <span>🌧️ Lluvia Suave</span>
+                    <button class="play-btn">▶</button>
+                </div>
+                 <div class="sound-card glass-card">
+                    <span>🌲 Bosque</span>
+                    <button class="play-btn">▶</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-health">
+        <div class="view-container fade-in">
+            <h2 class="page-title">Diario de Salud</h2>
+            
+            <form class="health-form glass-card" onsubmit="app.saveHealthLog(event)">
+                <div class="form-group">
+                    <label>¿Cómo te sientes?</label>
+                    <div class="mood-selector">
+                        <input type="radio" name="mood" value="great" id="m1"><label for="m1">😄</label>
+                        <input type="radio" name="mood" value="good" id="m2"><label for="m2">🙂</label>
+                        <input type="radio" name="mood" value="meh" id="m3"><label for="m3">😐</label>
+                        <input type="radio" name="mood" value="bad" id="m4"><label for="m4">😫</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Síntomas o Notas</label>
+                    <textarea placeholder="Dolor de cabeza, tomé paracetamol..." required></textarea>
+                </div>
+                <button type="submit" class="primary-btn full-width">Guardar Registro</button>
+            </form>
+
+            <h3 class="section-title">Historial Reciente</h3>
+            <div class="log-list" id="health-logs">
+                <!-- Logs injected here -->
+                <div class="log-item glass-card">
+                    <div class="log-header">
+                        <span class="log-mood">🙂</span>
+                        <span class="log-time">Hoy, 10:00 AM</span>
+                    </div>
+                    <p class="log-text">Me siento con energía, tomé mis vitaminas.</p>
+                </div>
+            </div>
+            <h3 class="section-title">Evolución de Emociones</h3>
+<div id="mood-chart-container" class="glass-card">
+    <canvas id="mood-chart" width="400" height="150"></canvas>
+</div>
+
+        </div>
+    </template>
+
+    <script src="js/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registrado', reg))
+                    .catch(err => console.log('SW error', err));
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>
