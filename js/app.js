@@ -33,6 +33,8 @@ const app = {
         this.updateUI();
     },
 
+    
+
     setupNavigation() {
         document.querySelectorAll('.nav-item').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -114,6 +116,8 @@ const app = {
         }
         this.saveState();
     },
+
+    
 
     updateHabitsView() {
         const waterVal = document.getElementById('water-val');
@@ -211,6 +215,27 @@ const app = {
         e.target.reset();
         this.renderLogs();
     },
+
+    resetProgress() {
+        if (confirm("¿Quieres resetear tu progreso? Se perderán todos los datos guardados.")) {
+            localStorage.removeItem('aura_state');
+            this.state = {
+                habits: {
+                    water: 0,
+                    sleep: 0,
+                    exercise: 0
+                },
+                goals: {
+                    water: 2000,
+                    sleep: 8,
+                    exercise: 30
+                },
+                logs: [],
+                view: 'home'
+            };
+            this.saveState();
+            this.renderView(this.state.view);
+        }},
 
     renderLogs() {
         const container = document.getElementById('health-logs');
